@@ -20,6 +20,18 @@ function resetGame(){
     location.reload();
 }
 
+function showPopup(){
+    var abGame = document.getElementById("aboutGame");
+    var game = document.getElementById("mainGame");
+    if (abGame.style.display === 'none') {
+      abGame.style.display = 'block';
+      game.style.display = 'none';
+    } else {
+      abGame.style.display = 'none';
+      game.style.display ='block';
+    }
+  }
+
 var gameloop = window.setInterval(function(){
     ;
     updateMeter();
