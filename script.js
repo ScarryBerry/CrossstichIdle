@@ -32,7 +32,7 @@ function showPopup(){
   }
 
 function Money1(){
-    currentMoney =+ 1
+    gamedata.currentMoney = gamedata.currentMoney + 1
     document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2)
 }
 var gameloop = window.setInterval(function(){
