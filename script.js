@@ -5,8 +5,7 @@ var gamedata = {
 
 function setSaveGameData(){
 
-    document.getElementById("currentMoney").innerHTML =
-        "current money: " + gamedata.currentMoney.toFixed(2);
+    document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2);
       
     }
 
@@ -34,8 +33,7 @@ function showPopup(){
 
 function Money1(){
     currentMoney =+ 1
-    document.getElementById("currentMoney").innerHTML =
-        "current money: " + gamedata.currentMoney.toFixed(2)
+    document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2)
 }
 var gameloop = window.setInterval(function(){
     
