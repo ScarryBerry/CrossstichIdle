@@ -32,10 +32,14 @@ function showPopup(){
     }
   }
 
+function Money1(){
+    currentMoney =+ 1
+    document.getElementById("currentMoney").innerHTML =
+        "current money: " + gamedata.currentMoney.toFixed(2)
+}
 var gameloop = window.setInterval(function(){
-    ;
-    updateMeter();
-    money =+ 1
+    
+    Money1();
   }, 100)
 var saveGameLoop = window.setInterval(function() {
     localStorage.setItem("CrossSave", JSON.stringify(gamedata));
