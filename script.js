@@ -1,6 +1,6 @@
 var gamedata = {
     currentMoney: 10,
-    data: x
+    data: 0
   };
 
 function setSaveGameData(){
