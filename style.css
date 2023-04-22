@@ -6,9 +6,9 @@
     right: 10px;
     bottom: 10px;
   }
-  #aboutGame{
-    display: none;
- }
  #mainGame{
     display:block;
   }
+#picButton{
+   display: block;
+}
