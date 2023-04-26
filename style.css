@@ -12,3 +12,6 @@
 #picButton{
    display: block;
 }
+#placeForPic{
+   display:none;
+}

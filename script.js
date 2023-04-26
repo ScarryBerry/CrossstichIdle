@@ -9,7 +9,7 @@ function setSaveGameData(){
     document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2);
     if(gamedata.workingPic){
       document.getElementById("picButton").style.display = "none"
-      console.log(gamedata.workingPic)
+      document.getElementById("placeForPic").style.display = "block"
     }
     }
 
@@ -44,8 +44,8 @@ function Money1(){
 function buyPic() {
   gamedata.workingPic = true
   document.getElementById("picButton").style.display = "none"
-  
-  document.getElementById("placeForPic").innerHTML = "<p>Upgrade Bought</p>"
+  document.getElementById("placeForPic").style.display = "block"
+  gen5()
 }
 var gameloop = window.setInterval(function(){
     //Should do nothing, stub for repeating actions (upgrade idea for later)
@@ -58,4 +58,31 @@ var saveGameLoop = window.setInterval(function() {
   if (savegame !== null) {
     gamedata = savegame;
     setSaveGameData()
+  }
+
+  //gamefield
+  function gen5(){
+    //TODO randomfunction to choose a pattern, for now i'll just go with one pattern and 2 colors
+    var field = []
+    var gamefield = "<table>"  //htmlelement
+    for(var i = 0; i < (5*5); i = i +5){
+      field.push([i, i+1, i+2, i+3, i+4, i+5])
+    }
+    //TODO get the pattern onto the grid
+    console.log(field)
+
+    //TODO Print of pattern instead of values
+    for(var row of field){
+      var tr = "<tr>"
+      for(var cell of row){
+        tr = tr + "<td>" + cell + "</td>"
+      }
+      tr = tr + "</tr>"
+      gamefield = gamefield + tr
+      console.log(tr)
+    }
+    gamefield = gamefield + "</table>"
+    console.log(gamefield)
+    document.getElementById("placeForPic").innerHTML = gamefield
+    
   }
