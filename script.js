@@ -1,15 +1,19 @@
+import patterns from './patterns.json' assert { type: 'json' };
+
 var gamedata = {
     currentMoney: 10,
     threads: [],
-    workingPic: false
+    workingPic: false,
+    pattern: ""
   };
-
+//var charvault = ["a","b","c","d","e","f","g","h","i","j","k",l,m,n,o,p,j,r,s,t,u,v,w,x,y,z]
 function setSaveGameData(){
 
     document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2);
     if(gamedata.workingPic){
       document.getElementById("picButton").style.display = "none"
       document.getElementById("placeForPic").style.display = "block"
+      gen5(gamedata.pattern)
     }
     }
 
@@ -61,7 +65,7 @@ var saveGameLoop = window.setInterval(function() {
   }
 
   //gamefield
-  function gen5(){
+  function gen5(pattern){
     //TODO randomfunction to choose a pattern, for now i'll just go with one pattern and 2 colors
     var field = []
     var gamefield = "<table>"  //htmlelement
@@ -69,8 +73,7 @@ var saveGameLoop = window.setInterval(function() {
       field.push([i, i+1, i+2, i+3, i+4, i+5])
     }
     //TODO get the pattern onto the grid
-    console.log(field)
-
+    console.log(patterns)
     //TODO Print of pattern instead of values
     for(var row of field){
       var tr = "<tr>"
@@ -79,7 +82,6 @@ var saveGameLoop = window.setInterval(function() {
       }
       tr = tr + "</tr>"
       gamefield = gamefield + tr
-      console.log(tr)
     }
     gamefield = gamefield + "</table>"
     console.log(gamefield)
