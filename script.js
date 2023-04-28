@@ -1,4 +1,4 @@
-import patterns from './patterns.json' assert { type: 'json' };
+
 
 var gamedata = {
     currentMoney: 10,
@@ -7,6 +7,15 @@ var gamedata = {
     pattern: ""
   };
 //var charvault = ["a","b","c","d","e","f","g","h","i","j","k",l,m,n,o,p,j,r,s,t,u,v,w,x,y,z]
+const patterns = {
+	gen5: {
+		smile: {
+      name: "smile",
+			colors: ["#000000", "#ffffff"],
+			pattern: ["a", "a", "b", "a", "a", "a", "a", "b", "a", "a", "b", "b", "b", "b", "b", "a", "b", "b", "b", "a", "b", "a", "a", "a", "b"]
+		}
+	}
+}
 function setSaveGameData(){
 
     document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2);
@@ -68,12 +77,18 @@ var saveGameLoop = window.setInterval(function() {
   function gen5(pattern){
     //TODO randomfunction to choose a pattern, for now i'll just go with one pattern and 2 colors
     var field = []
-    var gamefield = "<table>"  //htmlelement
-    for(var i = 0; i < (5*5); i = i +5){
-      field.push([i, i+1, i+2, i+3, i+4, i+5])
-    }
+    var gamefield = "<table style='tablepic'>"  //htmlelement
+    // for(var i = 0; i < (5*5); i = i +5){
+    //   field.push([i, i+1, i+2, i+3, i+4, i+5])
+    // }
+    //TODO Patternpicker
+    gamedata.pattern = patterns.gen5.smile.pattern
+    console.log(gamedata.pattern[2])
     //TODO get the pattern onto the grid
-    console.log(patterns)
+    for(var i = 0; i < (5*5); i = i +5){
+      field.push([gamedata.pattern[i], gamedata.pattern[i+1], gamedata.pattern[i+2], gamedata.pattern[i+3], gamedata.pattern[i+4] ])
+    }
+
     //TODO Print of pattern instead of values
     for(var row of field){
       var tr = "<tr>"
