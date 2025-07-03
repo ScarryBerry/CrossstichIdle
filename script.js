@@ -65,7 +65,7 @@ var saveGameLoop = window.setInterval(function() {
   }
 
   //gamefield
-  function gen5(pattern){
+  async function gen5(pattern){
     //TODO randomfunction to choose a pattern, for now i'll just go with one pattern and 2 colors
     var field = []
     var gamefield = "<table style='tablepic'>"  //htmlelement
@@ -73,9 +73,11 @@ var saveGameLoop = window.setInterval(function() {
     //   field.push([i, i+1, i+2, i+3, i+4, i+5])
     // }
     //TODO Patternpicker
-    gamedata.pattern = loadPattern("smile")
-    console.log(gamedata.pattern[2])
-    //TODO get the pattern onto the grid
+    //only process if promise is resolved
+    await loadPattern("smile")
+
+    
+      //TODO get the pattern onto the grid
     for(var i = 0; i < (5*5); i = i +5){
       field.push([gamedata.pattern[i], gamedata.pattern[i+1], gamedata.pattern[i+2], gamedata.pattern[i+3], gamedata.pattern[i+4] ])
     }
@@ -92,13 +94,15 @@ var saveGameLoop = window.setInterval(function() {
     gamefield = gamefield + "</table>"
     console.log(gamefield)
     document.getElementById("placeForPic").innerHTML = gamefield
+    }
     
-  }
+    
+  
 
 // Load of patterns from folder
 async function loadPattern(name) {
   const response = await fetch(`patterns/${name}.json`);
-  console.log(response)
+  
   const pattern = await response.json();
-  return pattern;
+  gamedata.pattern = pattern.pattern;
 }
