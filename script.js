@@ -6,16 +6,7 @@ var gamedata = {
     workingPic: false,
     pattern: ""
   };
-//var charvault = ["a","b","c","d","e","f","g","h","i","j","k",l,m,n,o,p,j,r,s,t,u,v,w,x,y,z]
-const patterns = {
-	gen5: {
-		smile: {
-      name: "smile",
-			colors: ["#000000", "#ffffff"],
-			pattern: ["a", "a", "b", "a", "a", "a", "a", "b", "a", "a", "b", "b", "b", "b", "b", "a", "b", "b", "b", "a", "b", "a", "a", "a", "b"]
-		}
-	}
-}
+
 function setSaveGameData(){
 
     document.getElementById("currentMoney").innerHTML = "current money: " + gamedata.currentMoney.toFixed(2);
@@ -82,7 +73,7 @@ var saveGameLoop = window.setInterval(function() {
     //   field.push([i, i+1, i+2, i+3, i+4, i+5])
     // }
     //TODO Patternpicker
-    gamedata.pattern = patterns.gen5.smile.pattern
+    gamedata.pattern = loadPattern("smile")
     console.log(gamedata.pattern[2])
     //TODO get the pattern onto the grid
     for(var i = 0; i < (5*5); i = i +5){
@@ -103,3 +94,10 @@ var saveGameLoop = window.setInterval(function() {
     document.getElementById("placeForPic").innerHTML = gamefield
     
   }
+
+// Load of patterns from folder
+async function loadPattern(name) {
+  const response = await fetch(`patterns/${name}.json`);
+  const pattern = await response.json();
+  return pattern;
+}
