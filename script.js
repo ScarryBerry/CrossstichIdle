@@ -98,6 +98,7 @@ var saveGameLoop = window.setInterval(function() {
 // Load of patterns from folder
 async function loadPattern(name) {
   const response = await fetch(`patterns/${name}.json`);
+  console.log(response)
   const pattern = await response.json();
   return pattern;
 }

@@ -1,0 +1,9 @@
+{
+  "name": "flower",
+  "colors": ["#000000", "#ffffff", "#ffd500", "#14a603", "#dda9de"],
+  "pattern": ["e", "a", "a", "a", "e", "e", "e", "e", "e", "e", "e", "e",
+              "e", "a", "d", "d", "a", "e", "e", "e", "e", "e", "e", "e",
+             "a", "b"],
+  "heigh": "16",
+  "width": "12"
+}
